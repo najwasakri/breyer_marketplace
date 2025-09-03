@@ -1,0 +1,22 @@
+/* Breyer Marketplace - Premium Admin Login Design */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, 
+        #667eea 0%, 
+        #764ba2 25%, 
+        #667eea 50%, 
+        #764ba2 75%, 
+        #667eea 100%);
+    background-size: 400% 400%;
+    animation: gradientWave 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ...teruskan dengan semua kod CSS lain yang anda beri... */
