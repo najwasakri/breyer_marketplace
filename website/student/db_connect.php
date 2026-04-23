@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db   = 'breyer_marketplace';
-$user = 'root';
-$pass = '';
+$db   = 'breyermarketplacedb';
+$user = 'breyermarketplace';
+$pass = 'jhKuykVC1X4IOk6txJ98';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
