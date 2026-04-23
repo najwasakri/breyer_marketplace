@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "breyer_marketplace";
+$username = "breyermarketplace";
+$password = "jhKuykVC1X4IOk6txJ98";
+$dbname = "breyermarketplacedb";
 
 try {
     $conn = new mysqli($servername, $username, $password, $dbname);
