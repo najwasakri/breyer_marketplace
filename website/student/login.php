@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-$conn = mysqli_connect("localhost", "root", "", "breyer_marketplace");
+$conn = mysqli_connect("localhost", "breyermarketplace", "jhKuykVC1X4IOk6txJ98", "breyermarketplacedb");
 
 // Periksa sambungan
 if (!$conn) {
