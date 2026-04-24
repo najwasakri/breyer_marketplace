@@ -29,18 +29,22 @@ function respondJson($success, $message, $extra = []) {
 $catalog = [
     'AM' => [
         'BAJU KORPORAT' => 85.00,
+        'BAJU ADMINISTRATION MANAGEMENT' => 85.00,
         'BAJU T-SHIRT KOLEJ' => 28.00,
     ],
     'CS' => [
         'BAJU KORPORAT' => 85.00,
+        'BAJU COMPUTER SYSTEM' => 85.00,
         'BAJU T-SHIRT KOLEJ' => 28.00,
     ],
     'CULINARY' => [
         'BAJU KORPORAT' => 85.00,
+        'BAJU CULINARY' => 85.00,
         'BAJU T-SHIRT KOLEJ' => 28.00,
     ],
     'ELECTRICAL' => [
         'BAJU KORPORAT' => 85.00,
+        'BAJU ELECTRICAL' => 85.00,
         'BAJU T-SHIRT KOLEJ' => 28.00,
     ],
     'LAIN-LAIN' => [
