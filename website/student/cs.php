@@ -1,4 +1,4 @@
-<?php
+-<?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
@@ -19,39 +19,6 @@ if (!isset($_SESSION['user_id'])) {
 
         body {
             margin: 0;
-            <?php
-            // Baca stok size dari stok_produk.json
-            $stok_produk = json_decode(file_get_contents(__DIR__.'/../../admin/stok_produk.json'), true);
-            $products = [
-                [
-                    'type' => 'BAJU COMPUTER SYSTEM', // Sama dengan nama di admin
-                    'price' => 'RM85.00',
-                    'image' => 'ads8/breyer-baju1.png'
-                ],
-                [
-                    'type' => 'BAJU T-SHIRT KOLEJ',
-                    'price' => 'RM28.00',
-                    'image' => 'ads8/breyer-baju1.png'
-                ]
-            ];
-
-            foreach ($products as $index => $product) {
-                $stok_size = isset($stok_produk[$product['type']]) ? $stok_produk[$product['type']] : ['S'=>0,'M'=>0,'L'=>0,'XL'=>0];
-                echo '<div class="course-card">';
-                echo '<img src="'.$product['image'].'" alt="'.$product['type'].'">';
-                echo '<h3 style="font-size: 1.1rem; text-transform: uppercase;">'.$product['type'].'</h3>';
-                echo '<p class="price">'.$product['price'].'</p>';
-                echo '<div class="button-group">';
-                // Hantar stok size ke JS untuk modal (gunakan json_encode sahaja)
-                echo '<button class="beli-btn" onclick="openModal(\''.$product['type'].'\', \' '.$product['price'].'\', '.json_encode($stok_size).')">BELI</button>';
-                echo '<button class="cart-btn" onclick="addToCart(\''.$product['type'].'\', \' '.$product['price'].'\', \'CS\')">🛒 ADD TO CART</button>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
         }
 
         .product-card:hover {
@@ -1139,6 +1106,5 @@ if (!isset($_SESSION['user_id'])) {
 
         attachBankHandlers();
     </script>
-</script>
 </body>
 </html>
