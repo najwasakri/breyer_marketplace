@@ -19,6 +19,11 @@ if (!isset($_SESSION['user_id'])) {
 
         body {
             margin: 0;
+            background-image: var(--cs-bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
         .product-card:hover {
