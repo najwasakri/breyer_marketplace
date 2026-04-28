@@ -57,6 +57,32 @@ if (isset($_POST['edit_item'])) {
     header("Location: manage_inventory.php");
     exit;
 }
+
+// Edit Stok Size handler
+if (isset($_POST['edit_stok_size'])) {
+    $stok_item_name = $_POST['stok_item_name'];
+    $stok_S = (int)$_POST['stok_S'];
+    $stok_M = (int)$_POST['stok_M'];
+    $stok_L = (int)$_POST['stok_L'];
+    $stok_XL = (int)$_POST['stok_XL'];
+    
+    // Baca fail JSON sedia ada
+    $stok_produk = json_decode(file_get_contents(__DIR__ . '/stok_produk.json'), true);
+    
+    // Update data
+    $stok_produk[$stok_item_name] = [
+        'S' => $stok_S,
+        'M' => $stok_M,
+        'L' => $stok_L,
+        'XL' => $stok_XL
+    ];
+    
+    // Simpan balik ke fail JSON
+    file_put_contents(__DIR__ . '/stok_produk.json', json_encode($stok_produk, JSON_PRETTY_PRINT));
+    
+    header("Location: manage_inventory.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -585,6 +611,9 @@ if (isset($_POST['edit_item'])) {
                         <td>
                             <button class="btn-edit" onclick="editItem(<?php echo $row['id']; ?>)">Edit</button>
                             <button class="btn-delete" onclick="deleteItem(<?php echo $row['id']; ?>)">Delete</button>
+                            <?php if (isset($stok_produk[$row['item_name']])): ?>
+                                <button class="btn-edit" style="background:#4CAF50;color:white;" onclick="editStokSize('<?php echo htmlspecialchars($row['item_name'], ENT_QUOTES); ?>')">Edit Stok Size</button>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -658,6 +687,37 @@ if (isset($_POST['edit_item'])) {
         <input type="hidden" name="delete_id" id="delete_id">
     </form>
 
+    <!-- Edit Stok Size Modal -->
+    <div id="editStokSizeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditStokSizeModal()">&times;</span>
+            <h3>Edit Stok Size</h3>
+            <form method="POST" action="" id="editStokSizeForm">
+                <input type="hidden" name="stok_item_name" id="stok_item_name">
+                <div class="form-group">
+                    <label>Saiz S</label>
+                    <input type="number" name="stok_S" id="stok_S" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Saiz M</label>
+                    <input type="number" name="stok_M" id="stok_M" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Saiz L</label>
+                    <input type="number" name="stok_L" id="stok_L" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Saiz XL</label>
+                    <input type="number" name="stok_XL" id="stok_XL" min="0" required>
+                </div>
+                <div class="add-item-actions">
+                    <button type="submit" name="edit_stok_size" class="add-item-btn">Simpan</button>
+                    <button type="button" onclick="closeEditStokSizeModal()" class="add-item-btn">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         function showAddItemModal() {
             document.getElementById('addItemModal').style.display = 'block';
@@ -696,7 +756,33 @@ if (isset($_POST['edit_item'])) {
                 document.getElementById('deleteForm').submit();
             }
         }
+
+        // Edit Stok Size
+        function editStokSize(itemName) {
+            // Dapatkan stok dari PHP (window.stokProduk)
+            var stok = window.stokProduk[itemName];
+            document.getElementById('stok_item_name').value = itemName;
+            document.getElementById('stok_S').value = stok['S'] || 0;
+            document.getElementById('stok_M').value = stok['M'] || 0;
+            document.getElementById('stok_L').value = stok['L'] || 0;
+            document.getElementById('stok_XL').value = stok['XL'] || 0;
+            document.getElementById('editStokSizeModal').style.display = 'block';
+        }
+        function closeEditStokSizeModal() {
+            document.getElementById('editStokSizeModal').style.display = 'none';
+        }
+        // Tutup modal bila klik luar
+        window.onclick = function(event) {
+            var modal = document.getElementById('editStokSizeModal');
+            if (event.target === modal) {
+                closeEditStokSizeModal();
+            }
+        }
     </script>
+<script>
+// Data stok_produk.json ke JS
+window.stokProduk = <?php echo json_encode($stok_produk); ?>;
+</script>
 <?php
 require_once __DIR__ . '/includes/admin_notifications.php';
 render_admin_notification_center();
