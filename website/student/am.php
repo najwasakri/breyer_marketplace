@@ -752,12 +752,12 @@ if (!isset($_SESSION['user_id'])) {
                 [
                     'type' => 'BAJU ADMINISTRATION MANAGEMENT',
                     'price' => 'RM85.00',
-                    'image' => 'ads8/breyer-baju1.png'
+                    'image' => 'ads43/BAJU AM.png'
                 ],
                 [
                     'type' => 'BAJU T-SHIRT KOLEJ',
                     'price' => 'RM28.00',
-                    'image' => 'ads8/breyer-baju1.png'
+                    'image' => 'ads42/BAJU T-SHIRTT.png'
                 ]
             ];
 
