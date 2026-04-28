@@ -724,7 +724,7 @@ if (!isset($_SESSION['user_id'])) {
                 [
                     'type' => 'BAJU COMPUTER SYSTEM',
                     'price' => 'RM85.00',
-                    'image' => 'ads8/breyer-baju1.png'
+                    'image' => 'ads8/breyer-bajucs.png'
                 ],
                 [
                     'type' => 'BAJU T-SHIRT KOLEJ',
