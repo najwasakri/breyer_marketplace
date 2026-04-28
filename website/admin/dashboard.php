@@ -1285,6 +1285,7 @@ try {
                 </button>
             </div>
             <button class="btn-change-password" id="showChangePassword">Tukar Kata Laluan</button>
+            <button class="btn-logout" onclick="window.location.href='logout.php'" style="margin-top:16px;background:#e74c3c;color:white;padding:12px 0;border:none;border-radius:8px;width:100%;font-size:1.1rem;cursor:pointer;">Log Keluar</button>
         </div>
     </div>
 
