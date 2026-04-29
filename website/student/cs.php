@@ -705,6 +705,20 @@ if (!isset($_SESSION['user_id'])) {
                 transform: translateY(0);
             }
         }
+        /* Mobile scroll fixes: allow normal vertical flow on small screens */
+        @media (max-width: 768px) {
+            body { background-attachment: scroll !important; }
+            .container { padding-bottom: 120px !important; }
+            .course-grid {
+                height: auto !important;
+                overflow: visible !important;
+                -webkit-overflow-scrolling: touch;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
