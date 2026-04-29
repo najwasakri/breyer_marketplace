@@ -139,14 +139,15 @@ if (!isset($_SESSION['user_id'])) {
         .course-grid {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 20px;
+            align-items: flex-start;
+            gap: 15px;
             flex-wrap: wrap;
-            padding: 15px;
+            padding: 5px;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            min-height: calc(100vh - 200px);
+            height: calc(100vh - 140px);
+            overflow: hidden;
             box-sizing: border-box;
         }
 
@@ -192,12 +193,16 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         .course-card h3 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #663399;
             margin: 8px 0;
             letter-spacing: 0.5px;
             font-weight: bold;
             line-height: 1.2;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .course-card p {
