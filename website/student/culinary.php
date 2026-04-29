@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culinary Products - Breyer</title>
     <!-- Updated: 2026-04-14 11:45 -->
     <style>
