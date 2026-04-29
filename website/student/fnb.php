@@ -1312,7 +1312,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="product-card">
-                <img src="ads47/LANYARD.png" alt="Lanyard" class="product-image">
+                <img src="ads47/LANYARDD.png" alt="Lanyard" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">LANYARD</h3>
                     <p class="product-price">RM5.00</p>
