@@ -2359,9 +2359,7 @@ try {
                         🤖
                     </div>
                     <div class="message-content">
-                        🎉 Hai! Selamat datang ke dunia pembelajaran Breyer Marketplace! 
-                        <br><br>🤝 Saya adalah pembantu pintar anda dan saya SANGAT excited untuk membantu! 
-                        <br><br>💡 Apa yang boleh saya bantu hari ini? ✨
+                        HI SELAMAT DATANG KE WEBSITE BREYER SHOP
                     </div>
                 </div>
             </div>
@@ -2678,7 +2676,7 @@ try {
             } else if (lowerMessage.includes('kategori') || lowerMessage.includes('jenis') || lowerMessage.includes('course')) {
                 return '📚 OMG! Course kiteorang POWER habis! <br><br>🔥 Check out kategori HOT ni:<br>💻 CS (Computer System) - Tech lovers!<br>📋 AM (Admin Management) - Business minded!<br>👨‍🍳 CULINARY - Food passionate!<br>⚡ ELECTRICAL - Future engineers!<br>🎯 LAIN-LAIN - Special courses!<br><br>✨ Semua course ada future bright! 🌟';
             } else if (lowerMessage.includes('selamat') || lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                return '🎉 HOYEAH! Selamat datang ke Breyer family! <br><br>🤗 Saya SUPER happy dapat jumpa awak! Nak tanya apa-apa ke? <br><br>💡 Pro tip: Try klik quick questions kat bawah tu untuk shortcut! 🚀';
+                return 'HI SELAMAT DATANG KE WEBSITE BREYER SHOP';
             } else if (lowerMessage.includes('terima kasih') || lowerMessage.includes('thanks')) {
                 return '🥰 Awww, sama-sama! <br><br>🌟 PLEASURE bantu awak! Kalau ada apa-apa lagi, jangan segan-segan tanya ye! <br><br>💪 Kiteorang always ready to help! 24/7 support! ✨';
             } else {
