@@ -1272,12 +1272,7 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                         </div>
                     </div>
 
-                    <div class="hero-actions">
-                        <a href="dashboard.php" class="action-button primary">Kembali ke Dashboard</a>
-                        <button type="button" class="button-reset action-button" data-tab-target="profile-panel">Edit Profil</button>
-                        <button type="button" class="button-reset action-button" data-tab-target="account-panel">Lihat Akaun</button>
-                        <button type="button" class="button-reset action-button" data-tab-target="privacy-panel">Lihat Privasi</button>
-                    </div>
+                    
                 </section>
 
                 <section class="tab-panel is-active" id="profile-panel">
