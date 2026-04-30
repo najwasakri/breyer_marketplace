@@ -1348,10 +1348,7 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                         <div class="detail-card">
                             <h2>Tindakan Akaun</h2>
                             <div class="detail-list">
-                                <div class="detail-list-row">
-                                    <span class="detail-list-label">Dashboard</span>
-                                    <a href="dashboard.php" class="action-button">Pergi ke dashboard</a>
-                                </div>
+                                
                                 <div class="detail-list-row">
                                     <span class="detail-list-label">Kemaskini profil</span>
                                     <button type="button" class="button-reset action-button" data-tab-target="profile-panel">Buka panel profile</button>
@@ -1430,10 +1427,7 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                                     <span class="detail-list-label">Privacy</span>
                                     <button type="button" class="button-reset action-button" data-tab-target="privacy-panel">Buka privacy center</button>
                                 </div>
-                                <div class="detail-list-row">
-                                    <span class="detail-list-label">Dashboard</span>
-                                    <a href="dashboard.php" class="action-button">Pergi ke dashboard</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
