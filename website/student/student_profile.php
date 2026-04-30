@@ -1493,21 +1493,24 @@ $hasCustomProfileImage = $studentProfileImage !== '';
             }
 
             function applyAvatarFallback() {
+                if (!avatar) return;
                 avatar.classList.add('fallback');
             }
 
             function setAvatarSource(source) {
+                if (!avatar || !avatarImage) return;
                 avatar.classList.remove('fallback');
                 avatarImage.src = source;
             }
 
-            tabTriggers.forEach(function (trigger) {
-                trigger.addEventListener('click', function () {
-                    const panelId = trigger.dataset.tabTarget;
-                    if (panelId) {
-                        activatePanel(panelId);
-                    }
-                });
+            // Use event delegation so clicks work even if elements are updated dynamically
+            document.addEventListener('click', function (evt) {
+                var trigger = evt.target.closest && evt.target.closest('[data-tab-target]');
+                if (!trigger) return;
+                var panelId = trigger.dataset && trigger.dataset.tabTarget;
+                if (panelId) {
+                    activatePanel(panelId);
+                }
             });
 
             searchInput.addEventListener('input', function () {
@@ -1545,9 +1548,11 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                 });
             }
 
-            avatarImage.addEventListener('error', function () {
-                applyAvatarFallback();
-            });
+            if (avatarImage) {
+                avatarImage.addEventListener('error', function () {
+                    applyAvatarFallback();
+                });
+            }
         }());
     </script>
 </body>
