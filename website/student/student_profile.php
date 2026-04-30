@@ -7,6 +7,35 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once 'db_connect.php';
 
+        /* Mobile: simplify layout to only avatar + menu and disable modal */
+        @media (max-width: 720px) {
+            .detail-pane,
+            .profile-stage,
+            .hero-card,
+            .detail-card,
+            .mini-card,
+            .tab-panel {
+                display: none !important;
+            }
+
+            /* Keep the settings column visible and compact */
+            .settings-pane {
+                display: block;
+                border-bottom: none;
+                padding-top: 28px;
+            }
+
+            .student-card {
+                display: grid;
+            }
+
+            .settings-list {
+                display: block;
+            }
+
+            /* Disable the mobile modal entirely on small screens */
+            #mobileModal { display: none !important; }
+        }
 function ensureUserProfileColumns(PDO $pdo)
 {
     static $checked = false;
@@ -1534,22 +1563,15 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                 avatarImage.src = source;
             }
 
-            // Use event delegation so clicks work even if elements are updated dynamically.
-            // On mobile (<=720px) we move the selected panel into a modal for full-screen editing.
-            document.addEventListener('click', function (evt) {
-                var trigger = evt.target.closest && evt.target.closest('[data-tab-target]');
-                if (!trigger) return;
-                var panelId = trigger.dataset && trigger.dataset.tabTarget;
-                if (!panelId) return;
-
-                if (window.innerWidth <= 720) {
-                    evt.preventDefault();
-                    openMobileModalWithPanel(panelId);
-                    return;
-                }
-
-                activatePanel(panelId);
-            });
+                // Use event delegation so clicks work even if elements are updated dynamically.
+                // Panels are activated inline on all viewports; mobile modal is disabled.
+                document.addEventListener('click', function (evt) {
+                    var trigger = evt.target.closest && evt.target.closest('[data-tab-target]');
+                    if (!trigger) return;
+                    var panelId = trigger.dataset && trigger.dataset.tabTarget;
+                    if (!panelId) return;
+                    activatePanel(panelId);
+                });
 
             function openMobileModalWithPanel(panelId) {
                 var panel = document.getElementById(panelId);
