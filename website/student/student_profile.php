@@ -1133,6 +1133,35 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                 padding: 16px 0;
             }
         }
+        /* Mobile modal for panel views */
+        .mobile-modal { display: none; }
+        .mobile-modal.is-open { display: block; position: fixed; inset: 0; z-index: 1200; }
+        .mobile-modal-backdrop { position: fixed; inset: 0; background: rgba(8,20,40,0.45); }
+        .mobile-modal-sheet {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: min(920px, 94%);
+            max-height: 92vh;
+            overflow: auto;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 24px 48px rgba(8,20,40,0.32);
+            padding: 18px;
+        }
+        .mobile-modal-close {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            appearance: none;
+            border: none;
+            background: none;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .mobile-modal-content { padding-top: 8px; }
+        @media (min-width: 721px) { .mobile-modal { display: none !important; } }
     </style>
 </head>
 <body>
@@ -1418,6 +1447,15 @@ $hasCustomProfileImage = $studentProfileImage !== '';
         </main>
     </div>
 
+    <!-- Mobile modal (used for small screens) -->
+    <div id="mobileModal" class="mobile-modal" aria-hidden="true">
+        <div class="mobile-modal-backdrop" id="mobileModalBackdrop"></div>
+        <div class="mobile-modal-sheet" role="dialog" aria-modal="true" id="mobileModalSheet">
+            <button type="button" class="mobile-modal-close" id="mobileModalClose">Tutup</button>
+            <div class="mobile-modal-content" id="mobileModalContent"></div>
+        </div>
+    </div>
+
     <script>
         (function () {
             const avatar = document.getElementById('studentAvatar');
@@ -1431,6 +1469,12 @@ $hasCustomProfileImage = $studentProfileImage !== '';
             const profileImageInput = document.getElementById('profile_image');
             const removeProfileCheckbox = document.getElementById('remove_profile_image');
             const defaultAvatarPath = 'ads0/breyer-logo-profile.png';
+            // Mobile modal elements (exist in DOM just above this script)
+            const mobileModal = document.getElementById('mobileModal');
+            const mobileModalContent = document.getElementById('mobileModalContent');
+            const mobileModalClose = document.getElementById('mobileModalClose');
+            const mobileModalBackdrop = document.getElementById('mobileModalBackdrop');
+            const movedPanels = new Map();
 
             function activatePanel(panelId) {
                 navButtons.forEach(function (button) {
@@ -1490,15 +1534,57 @@ $hasCustomProfileImage = $studentProfileImage !== '';
                 avatarImage.src = source;
             }
 
-            // Use event delegation so clicks work even if elements are updated dynamically
+            // Use event delegation so clicks work even if elements are updated dynamically.
+            // On mobile (<=720px) we move the selected panel into a modal for full-screen editing.
             document.addEventListener('click', function (evt) {
                 var trigger = evt.target.closest && evt.target.closest('[data-tab-target]');
                 if (!trigger) return;
                 var panelId = trigger.dataset && trigger.dataset.tabTarget;
-                if (panelId) {
-                    activatePanel(panelId);
+                if (!panelId) return;
+
+                if (window.innerWidth <= 720) {
+                    evt.preventDefault();
+                    openMobileModalWithPanel(panelId);
+                    return;
                 }
+
+                activatePanel(panelId);
             });
+
+            function openMobileModalWithPanel(panelId) {
+                var panel = document.getElementById(panelId);
+                if (!panel || !mobileModal || !mobileModalContent) return;
+                // save original parent & next sibling so we can restore later
+                if (!movedPanels.has(panelId)) {
+                    movedPanels.set(panelId, { parent: panel.parentNode, next: panel.nextSibling });
+                }
+                mobileModalContent.innerHTML = '';
+                mobileModalContent.appendChild(panel);
+                panel.classList.add('is-active');
+                mobileModal.classList.add('is-open');
+                mobileModal.setAttribute('aria-hidden', 'false');
+                var focusable = panel.querySelector('button, a, input, [tabindex]');
+                if (focusable) focusable.focus();
+            }
+
+            function closeMobileModal() {
+                if (!mobileModal || !mobileModalContent) return;
+                mobileModal.classList.remove('is-open');
+                mobileModal.setAttribute('aria-hidden', 'true');
+                // restore moved panels
+                movedPanels.forEach(function (val, key) {
+                    var panel = document.getElementById(key);
+                    if (panel && val.parent) {
+                        val.parent.insertBefore(panel, val.next);
+                    }
+                });
+                movedPanels.clear();
+                mobileModalContent.innerHTML = '';
+            }
+
+            if (mobileModalClose) mobileModalClose.addEventListener('click', closeMobileModal);
+            if (mobileModalBackdrop) mobileModalBackdrop.addEventListener('click', closeMobileModal);
+            window.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMobileModal(); });
 
             searchInput.addEventListener('input', function () {
                 updateSearchResults(searchInput.value);
