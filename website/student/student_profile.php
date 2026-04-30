@@ -1163,20 +1163,7 @@ $hasCustomProfileImage = $studentProfileImage !== '';
             </div>
             <div class="search-status" id="searchStatus"></div>
 
-            <div class="suggest-card">
-                <div style="display:flex; gap:14px; align-items:flex-start; min-width:0;">
-                    <div class="suggest-icon">
-                        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
-                            <path d="M12 3a6 6 0 0 0-3.9 10.56V17l1.8-1.1A6 6 0 1 0 12 3Z" stroke="#f2f5f6" stroke-width="2" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                    <div class="suggest-copy">
-                        <h2>Edit profil anda</h2>
-                        <p>Kemaskini nama, nombor IC dan gambar profil di panel utama. <strong>Buka sekarang</strong></p>
-                    </div>
-                </div>
-                <button type="button" class="button-reset accent-button" data-tab-target="profile-panel">Edit profil</button>
-            </div>
+            
 
             <div class="student-card">
                 <div class="student-avatar<?php echo $hasCustomProfileImage ? '' : ' fallback'; ?>" id="studentAvatar">
