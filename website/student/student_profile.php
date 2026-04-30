@@ -7,35 +7,6 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once 'db_connect.php';
 
-        /* Mobile: simplify layout to only avatar + menu and disable modal */
-        @media (max-width: 720px) {
-            .detail-pane,
-            .profile-stage,
-            .hero-card,
-            .detail-card,
-            .mini-card,
-            .tab-panel {
-                display: none !important;
-            }
-
-            /* Keep the settings column visible and compact */
-            .settings-pane {
-                display: block;
-                border-bottom: none;
-                padding-top: 28px;
-            }
-
-            .student-card {
-                display: grid;
-            }
-
-            .settings-list {
-                display: block;
-            }
-
-            /* Disable the mobile modal entirely on small screens */
-            #mobileModal { display: none !important; }
-        }
 function ensureUserProfileColumns(PDO $pdo)
 {
     static $checked = false;
