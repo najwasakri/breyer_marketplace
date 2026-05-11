@@ -2120,34 +2120,6 @@ try {
                 transform: translateY(0);
             }
         }
-        /* Kecikkan popup kategori khusus untuk mobile kecil */
-        @media (max-width: 480px) {
-            .kategori-dropdown {
-                width: 160px !important;
-                min-width: 140px;
-                padding: 8px;
-                left: 50%;
-                transform: translateX(-50%);
-                top: calc(100% + 6px);
-                border-radius: 10px;
-                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            }
-
-            .kategori-dropdown a {
-                padding: 8px 10px;
-                font-size: 13px;
-                height: 40px;
-                line-height: 18px;
-                margin: 6px 0;
-                border-radius: 10px;
-            }
-
-            .kategori-btn {
-                width: 140px;
-                font-size: 1rem;
-                padding: 0.35rem 0.7rem;
-            }
-        }
     </style>
 </head>
 <body>
