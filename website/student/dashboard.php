@@ -2133,7 +2133,7 @@ try {
                 <nav class="nav-menu">
                     <a href="#home" class="active-page">HOME</a>
                     <div class="kategori-wrapper">
-                        <a href="#" class="kategori-btn">KATEGORI</a>
+                        <a href="#" class="kategori-btn">CATEGORY</a>
                         <div class="kategori-dropdown">
                             <a href="cs.php">CS</a>
                             <a href="am.php">AM</a>
@@ -2142,7 +2142,7 @@ try {
                             <a href="fnb.php">LAIN-LAIN</a>
                         </div>
                     </div>
-                    <a href="#hubungi" class="hubungi-link">HUBUNGI</a>
+                    <a href="#hubungi" class="hubungi-link">CONTACT US</a>
                 </nav>
             </div>
             

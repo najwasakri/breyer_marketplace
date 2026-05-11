@@ -1535,12 +1535,19 @@ $hasCustomProfileImage = $studentProfileImage !== '';
             }
 
                 // Use event delegation so clicks work even if elements are updated dynamically.
-                // Panels are activated inline on all viewports; mobile modal is disabled.
+                // On mobile (<=720px) open the selected panel inside the mobile modal.
                 document.addEventListener('click', function (evt) {
                     var trigger = evt.target.closest && evt.target.closest('[data-tab-target]');
                     if (!trigger) return;
                     var panelId = trigger.dataset && trigger.dataset.tabTarget;
                     if (!panelId) return;
+
+                    if (window.innerWidth <= 720) {
+                        evt.preventDefault();
+                        openMobileModalWithPanel(panelId);
+                        return;
+                    }
+
                     activatePanel(panelId);
                 });
 
