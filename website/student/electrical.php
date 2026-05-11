@@ -113,7 +113,7 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: bold;
             margin-bottom: 10px;
             color: #ffffff;
