@@ -2172,7 +2172,7 @@ try {
                         <p></p>
                     </div>
                 </div>
-                <div class="slide" style="background-image: url('banner2/banner-course.png');">
+                <div class="slide" style="background-image: url('banner4/banner-course.png');">
                     <div class="slide-content">
                         <h3></h3>
                         <p></p>
