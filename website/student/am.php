@@ -168,14 +168,13 @@ if (!isset($_SESSION['user_id'])) {
 
         .course-card {
             border: none;
+            border-radius: 12px;
             padding: 15px;
             width: 200px;
             text-align: center;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background: white;
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .course-card:hover {
