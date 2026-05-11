@@ -513,14 +513,14 @@ if (!isset($_SESSION['user_id'])) {
 
             .course-grid {
                 padding: 0;
-                gap: 18px;
+                gap: 16px;
                 min-height: auto;
                 justify-content: flex-start;
                 align-items: center;
                 flex-direction: column;
                 flex-wrap: nowrap;
                 width: 100%;
-                max-width: 380px;
+                max-width: 320px;
                 margin: 0 auto;
                 flex: none;
                 max-height: calc(100vh - 185px);
@@ -532,17 +532,15 @@ if (!isset($_SESSION['user_id'])) {
             }
 
             .course-card {
-                width: 100%;
-                padding: 16px 16px 14px;
+                width: min(100%, 280px);
+                padding: 16px;
                 margin: 0 auto;
-                border-radius: 20px;
-                box-shadow: 0 18px 34px rgba(62, 24, 106, 0.16);
             }
 
             .course-card img {
-                height: 188px;
+                height: 180px;
                 display: block;
-                margin: 0 auto 8px;
+                margin: 0 auto 12px;
             }
 
             .course-card h3 {
@@ -611,20 +609,20 @@ if (!isset($_SESSION['user_id'])) {
             }
 
             .course-grid {
-                gap: 16px;
+                gap: 14px;
                 min-height: auto;
-                max-width: 100%;
+                max-width: 280px;
                 max-height: calc(100vh - 165px);
                 padding-right: 6px;
             }
 
             .course-card {
-                width: min(100%, 320px);
-                padding: 14px 14px 12px;
+                width: min(100%, 250px);
+                padding: 14px;
             }
 
             .course-card img {
-                height: 172px;
+                height: 165px;
             }
 
             .course-card h3 {
